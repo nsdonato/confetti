@@ -8,7 +8,7 @@ function ConfettiApp() {
   const [audio] = useState(new Audio("/assets/audio/audio.mp3"));
   const [client] = useState(
     new Tmi.Client({
-      channels: ["rusgunx"],
+      channels: ["vamoacodear"],
     })
   );
 
@@ -33,12 +33,9 @@ function ConfettiApp() {
 
     client.on("message", (channel, tags, message, self) => {
       if (self) return;
-
-      ["!yeah", "!confetti", "!c"].forEach((cmd) => {
-        if (message.toLowerCase().includes(cmd)) {
-          !active && handleConfetti();
-        }
-      });
+      if (message.toLowerCase().includes("!confetti")) {
+        !active && handleConfetti();
+      }
     });
 
     return () => {
